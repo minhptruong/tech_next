@@ -28,14 +28,9 @@ class SearchPatents(Resource):
 		else:
 			return {"message" : "invalid query"}
 
-class HealthCheck(Resource):
-	def get(self):
-		return {"message" : "movies health check"}
-
 
 api = Api()
 api.add_resource(SearchPatents, '/patents')
-api.add_resource(HealthCheck, '/healthcheck')
 
 api.init_app(app)
 

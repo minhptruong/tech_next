@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const SERVER_URL = "http://148.75.243.252:8080";
+const SERVER_URL = "http://192.168.1.220:8080/patents";
 
 export const PatentsApi = axios.create({
   baseURL: SERVER_URL,

@@ -3,7 +3,7 @@ RUN apt update
 RUN apt install -y python3 python3-dev python3-pip
 
 WORKDIR /app
-ADD backend/. /app
+ADD /. /app
 RUN pip3 install --upgrade pip
 RUN pip3 install -r requirements.txt
 

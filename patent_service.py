@@ -1,11 +1,11 @@
 import os
-from aws import cloud_search
+from aws import cloud_search, aws_utils
 
 class PatentService:
 	def __init__(self):
-		config_region = aws_utils.config_region
-		patent_search_url = aws_utils.patent_search
-		patent_document_url = aws_utils.patent_document
+		config_region = os.environ['config_region']
+		patent_search_url = os.environ['patent_search']
+		patent_document_url = os.environ['patent_document']
 		cloudsearch_size = int(os.environ['patents_count'])
 
 		self.cloud_search = cloud_search.CloudSearch(config_region, patent_search_url, patent_document_url, cloudsearch_size)
@@ -33,6 +33,11 @@ class PatentService:
 		return results
 
 	def get_random_patents(self, count=None):
+		# random_ints = []
+		# for i in range(0, self.random_size_default):
+		# 	new_id = random.randint(0, self.cloudsearch_size)
+		# 	random_ints.append(new_id)
+
 		results = self.cloud_search.fetch_random()
 		return results
 

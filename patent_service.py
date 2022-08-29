@@ -1,5 +1,5 @@
 import os
-from aws import cloud_search, aws_utils
+from aws import cloud_search
 
 class PatentService:
 	def __init__(self):

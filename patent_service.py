@@ -3,14 +3,16 @@ from aws import cloud_search, aws_utils
 
 class PatentService:
 	def __init__(self):
+		config_region = aws_utils.config_region
+		patent_search_url = aws_utils.patent_search
+		patent_document_url = aws_utils.patent_document
+		cloudsearch_size = int(os.environ['patents_count'])
 
-		config_region = os.environ['config_region']
-		patent_search_url = os.environ['patent_search']
-		patent_document_url = os.environ['patent_document']
-
-		self.cloud_search = cloud_search.CloudSearch(config_region, patent_search_url, patent_document_url)
+		self.cloud_search = cloud_search.CloudSearch(config_region, patent_search_url, patent_document_url, cloudsearch_size)
 		self.patent_text = "patent_text"
 		self.patent_id = "patent_id"
+		self.random_size_default = 5
+		
 
 	def make_patent_doc(self, patent_id, patent_text):
 		search_fields = {self.patent_text: patent_text}
@@ -29,3 +31,11 @@ class PatentService:
 			self.patent_text: item["fields"]["patent_text"][0] }, results))
 
 		return results
+
+	def get_random_patents(self, count=None):
+		results = self.cloud_search.fetch_random()
+		return results
+
+
+
+

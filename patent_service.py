@@ -1,8 +1,14 @@
+import os
 from aws import cloud_search, aws_utils
 
 class PatentService:
 	def __init__(self):
-		self.cloud_search = cloud_search.CloudSearch(aws_utils.patent_search, aws_utils.patent_document)
+
+		config_region = os.environ['config_region']
+		patent_search_url = os.environ['patent_search']
+		patent_document_url = os.environ['patent_document']
+
+		self.cloud_search = cloud_search.CloudSearch(config_region, patent_search_url, patent_document_url)
 		self.patent_text = "patent_text"
 		self.patent_id = "patent_id"
 

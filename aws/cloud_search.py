@@ -2,9 +2,9 @@ import boto3
 import json
 
 class CloudSearch:
-	def __init__(self, search_endpoint, document_endpoint):
-		self.cloud_search = boto3.client("cloudsearchdomain", endpoint_url=search_endpoint, region_name="us-east-1")
-		self.cloud_document = boto3.client("cloudsearchdomain", endpoint_url=document_endpoint, region_name="us-east-1")
+	def __init__(self, region, search_endpoint, document_endpoint):
+		self.cloud_search = boto3.client("cloudsearchdomain", endpoint_url=search_endpoint, region_name=region)
+		self.cloud_document = boto3.client("cloudsearchdomain", endpoint_url=document_endpoint, region_name=region)
 
 		self.search_size = 50
 

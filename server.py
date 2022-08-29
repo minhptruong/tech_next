@@ -25,6 +25,7 @@ class SearchPatents(Resource):
 
 			return {"results": search_results}
 		elif "random" in request_data and request_data["random"] == "True":
+
 			patent_results = self.patent_service.get_random_patents()
 
 			return {"results": patent_results}
